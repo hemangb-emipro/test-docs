@@ -2,12 +2,6 @@
 {% include_relative installation/2-installation.md %}
 {% include_relative import-export-operations/4-import-export-operations.md %} -->
 
-<div>
-  <h1> Overview </h1>
-</div>
-<div>
 
 # [Overview](overview/1-overview.md)
-
 ## [Installation](installation/2-installation.md)
-</div>

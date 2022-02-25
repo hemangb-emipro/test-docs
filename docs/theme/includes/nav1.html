@@ -33,7 +33,7 @@
   {%- endfor -%}
 
   {%- assign pages_list = sorted_number_ordered_pages | concat: sorted_string_ordered_pages -%}
-  {%- test_page =  pages_list | strip | split: '<h'
+  {%- assign test_page =  pages_list | strip | split: '<h'
 
   {%- for node in test_page -%}
     {%- if node.parent == nil -%}

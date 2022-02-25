@@ -35,8 +35,8 @@
   {%- assign pages_list = sorted_number_ordered_pages | concat: sorted_string_ordered_pages -%}
   {%- assign test_page =  pages_list %}
 
-  <li class="nav-list-item{% if page.url == node.dir + node.filepath %} active{% endif %}">
-        <a href="{{ node.dir + node.filepath | absolute_url }}" class="nav-list-link{% if page.url == node.dir + node.filepath %} active{% endif %}">{{ node }}</a>
+  <li class="nav-list-item active">
+        <a href="{{ absolute_url }}" class="nav-list-link active">{{ test_page.contant }}</a>
       </li>
   
   {%- for node in test_page.contant -%}

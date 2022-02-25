@@ -1,9 +1,3 @@
----
-layout: default
-title: Dashboard
-nav_order: 6
----
-
 ### Dashboard
 
 

@@ -1,9 +1,3 @@
----
-layout: default
-title: Automatic Scheduler Configuration
-nav_order: 5
----
-
 ### Automatic Scheduler Configuration
 
 

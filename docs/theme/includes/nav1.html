@@ -26,16 +26,16 @@
   {%- endcomment -%}
   {%- assign nav_ordered_groups = nav_ordered_pages
         | group_by_exp:"item", "item.nav_order | jsonify | slice: 0" -%}
-  {%- assign number_ordered_pages = "" | split:"X" -%}
+<!--  {%- assign number_ordered_pages = "" | split:"X" -%}-->
   {%- for group in nav_ordered_groups -%}
     {%- if group.name == '"' -%}
       {%- assign string_ordered_pages = string_ordered_pages | concat: group.items -%}
     {%- else -%}
-      {%- assign number_ordered_pages = number_ordered_pages | concat: group.items -%}
+<!--      {%- assign number_ordered_pages = number_ordered_pages | concat: group.items -%}-->
     {%- endif -%}
   {%- endfor -%}
   
-  {%- assign sorted_number_ordered_pages = number_ordered_pages | sort:"nav_order" -%}
+<!--  {%- assign sorted_number_ordered_pages = number_ordered_pages | sort:"nav_order" -%}-->
   
   {%- comment -%}
     The string_ordered_pages have to be sorted by nav_order, and otherwise title
@@ -55,7 +55,8 @@
     {%- assign sorted_string_ordered_pages = sorted_string_ordered_pages | concat: group.items -%}
   {%- endfor -%}
 
-  {%- assign pages_list = sorted_number_ordered_pages | concat: sorted_string_ordered_pages -%}
+<!--  {%- assign pages_list = sorted_number_ordered_pages | concat: sorted_string_ordered_pages -%}-->
+  {%- assign pages_list = concat: sorted_string_ordered_pages -%}
 
   {%- for node in pages_list -%}
     {%- if node.parent == nil -%}

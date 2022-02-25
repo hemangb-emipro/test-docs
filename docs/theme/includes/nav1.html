@@ -1,12 +1,10 @@
 <ul class="nav-list">
-  {%- assign titled_pages = include.pages
-        | where_exp:"item", "item.ept != nil" -%}
-  {%- assign test_page =  titled_pages %}
+  {%- assign titled_pages = include.pages | where_exp:"item", "item.ept != nil" -%}
   
   <li> <!-- class="nav-list-item{% if page.url == node.url or page.parent == node.title or page.grand_parent == node.title %} active{% endif %}"> -->
     <p>sfdhkjsdhfkl</p>
-        <a href="{{ absolute_url }}" >{{ titled_pages }}</a>
-      </li>
+    <a href="{{ absolute_url }}">{{ titled_pages }}</a>
+   </li>
   
 <!--   {%- for node in titled_pages -%}
     {%- if node.parent == nil -%}

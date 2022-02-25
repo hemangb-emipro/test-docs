@@ -45,21 +45,21 @@
   {%- endcomment -%}
   {%- assign string_ordered_groups = string_ordered_pages
         | group_by_exp:"item", "item.nav_order | default: item.title | append:''" -%}
-  {%- if site.nav_sort == 'case_insensitive' -%}
+<!--   {%- if site.nav_sort == 'case_insensitive' -%}
     {%- assign sorted_string_ordered_groups = string_ordered_groups | sort_natural:"name" -%}
   {%- else -%}
     {%- assign sorted_string_ordered_groups = string_ordered_groups | sort:"name" -%}
-  {%- endif -%}
-  {%- assign sorted_string_ordered_pages = "" | split:"X" -%}
-  {%- for group in sorted_string_ordered_groups -%}
+  {%- endif -%} -->
+<!--   {%- assign sorted_string_ordered_pages = "" | split:"X" -%} -->
+<!--   {%- for group in sorted_string_ordered_groups -%}
     {%- assign sorted_string_ordered_pages = sorted_string_ordered_pages | concat: group.items -%}
-  {%- endfor -%}
+  {%- endfor -%} -->
 
 <!--  {%- assign pages_list = sorted_number_ordered_pages | concat: sorted_string_ordered_pages -%}-->
-  {%- assign pages_list = concat: sorted_string_ordered_pages -%}
-
+<!--   {%- assign pages_list = concat: sorted_string_ordered_pages -%}
+ -->
   {%- for node in pages_list -%}
-    {%- if node.parent == nil -%}
+    {%- if node.parent == nil & node.ept != nil -%}
       {%- unless node.nav_exclude -%}
       {%- assign temp_page_version = page.url | split: '/' -%}
       {%- assign temp_node_url = node.url | split: '/' -%}

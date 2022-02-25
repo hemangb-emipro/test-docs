@@ -44,7 +44,6 @@
         <a href="{{ node.dir + node.filepath | absolute_url }}" class="nav-list-link{% if page.url == node.dir + node.filepath %} active{% endif %}">{{ node }}</a>
       </li>
       {%- endif -%}
-      {%- endunless -%}
     {%- endif -%}
   {%- endfor -%}
 </ul>

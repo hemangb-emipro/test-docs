@@ -2,46 +2,6 @@
   {%- assign titled_pages = include.pages
         | where_exp:"item", "item.ept != nil" -%}
 
-<!--   {%- assign string_ordered_pages = titled_pages
-        | where_exp:"item", "item.nav_order == nil" -%} -->
-
-  {%- assign nav_ordered_pages = titled_pages
-        | where_exp:"item", "item.nav_order != nil"  -%}
-
-  {%- assign nav_ordered_groups = nav_ordered_pages
-        | group_by_exp:"item", "item.nav_order" -%}
-        | group_by_exp:"item", "item.nav_order | jsonify | slice: 0" -%}
-  {%- assign number_ordered_pages = "" | split:"X" -%}
-<!--   {%- for group in nav_ordered_groups -%}
-    {%- if group.name == '"' -%}
-      {%- assign string_ordered_pages = string_ordered_pages | concat: group.items -%}
-    {%- else -%}
-      {%- assign number_ordered_pages = number_ordered_pages | concat: group.items -%}
-    {%- endif -%}
-  {%- endfor -%} -->
-
-  {%- assign sorted_number_ordered_pages = number_ordered_pages | sort:"nav_order" -%}
-
-<!--   {%- comment -%}
-    The string_ordered_pages have to be sorted by nav_order, and otherwise title
-    (where appending the empty string to a numeric title converts it to a string).
-    After grouping them by those values, the groups are sorted, then the items
-    of each group are concatenated.
-  {%- endcomment -%} -->
-<!--   {%- assign string_ordered_groups = string_ordered_pages
-        | group_by_exp:"item", "item.nav_order | default: item.title | append:''" -%} -->
-<!--   {%- if site.nav_sort == 'case_insensitive' -%}
-    {%- assign sorted_string_ordered_groups = string_ordered_groups | sort_natural:"name" -%}
-  {%- else -%}
-    {%- assign sorted_string_ordered_groups = string_ordered_groups | sort:"name" -%}
-  {%- endif -%} -->
-<!--   {%- assign sorted_string_ordered_pages = "" | split:"X" -%} -->
-<!--   {%- for group in sorted_string_ordered_groups -%}
-    {%- assign sorted_string_ordered_pages = sorted_string_ordered_pages | concat: group.items -%}
-  {%- endfor -%} -->
-
-  {%- assign pages_list = sorted_number_ordered_pages -%}
-
   {%- for node in titled_pages -%}
     {%- if node.parent == nil -%}
       {%- unless node.nav_exclude -%}

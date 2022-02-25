@@ -1,0 +1,21 @@
+markdown: kramdown
+# layouts_dir: /theme/layout
+# logo: "theme/assets/images/ept_doc.png"
+search_enabled: true
+# heading_anchors: true
+# extra:
+#   generator: false
+# includes_dir: /theme/includes/
+# sass:
+#   sass_dir: /theme/_sass/
+# keep_files:
+#   - /theme/asset/
+# env:
+#   - THEME_DIR: /theme
+token: ${{ secrets.GH_PAT }}
+product_name: "Shipstation"
+product_logo: "logo.png"
+product_version:
+ - 15
+ - 14
+ - 13

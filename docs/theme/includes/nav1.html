@@ -1,0 +1,162 @@
+<ul class="nav-list">
+  {%- assign titled_pages = include.pages
+        | where_exp:"item", "item.ept != nil" -%}
+  
+<!--   {%- assign string_ordered_pages = titled_pages
+        | where_exp:"item", "item.nav_order == nil" -%}
+  {%- assign nav_ordered_pages = titled_pages
+        | where_exp:"item", "item.nav_order != nil"  -%}
+
+  {%- assign nav_ordered_groups = nav_ordered_pages
+        | group_by_exp:"item", "item.nav_order | jsonify | slice: 0" -%}
+  {%- assign number_ordered_pages = "" | split:"X" -%}
+  {%- for group in nav_ordered_groups -%}
+    {%- if group.name == '"' -%}
+      {%- assign string_ordered_pages = string_ordered_pages | concat: group.items -%}
+    {%- else -%}
+      {%- assign number_ordered_pages = number_ordered_pages | concat: group.items -%}
+    {%- endif -%}
+  {%- endfor -%}
+  
+  {%- assign sorted_number_ordered_pages = number_ordered_pages | sort:"nav_order" -%}
+  
+  {%- assign string_ordered_groups = string_ordered_pages
+        | group_by_exp:"item", "item.nav_order | default: item.title | append:''" -%}
+  {%- if site.nav_sort == 'case_insensitive' -%}
+    {%- assign sorted_string_ordered_groups = string_ordered_groups | sort_natural:"name" -%}
+  {%- else -%}
+    {%- assign sorted_string_ordered_groups = string_ordered_groups | sort:"name" -%}
+  {%- endif -%}
+  {%- assign sorted_string_ordered_pages = "" | split:"X" -%}
+  {%- for group in sorted_string_ordered_groups -%}
+    {%- assign sorted_string_ordered_pages = sorted_string_ordered_pages | concat: group.items -%}
+  {%- endfor -%}
+
+  {%- assign pages_list = sorted_number_ordered_pages | concat: sorted_string_ordered_pages -%} -->
+  {%- assign test_page =  titled_pages %}
+
+<!--   <li class="nav-list-item active">
+        <a href="{{ absolute_url }}" class="nav-list-link active">{{ test_page | strip | split: '<h' }}</a>
+      </li> -->
+  
+  {%- for node in test_page.contant -%}
+<!--     {%- if node.parent == nil -%}
+      {%- assign temp_page_version = page.url | split: '/' -%}
+      {%- assign temp_node_url = node.url | split: '/' -%}
+      {%- if temp_page_version[1] == temp_node_url[1] -%} -->
+<!--       <li class="nav-list-item{% if page.url == node.dir + node.filepath %} active{% endif %}">
+        <a href="{{ node.dir + node.filepath | absolute_url }}" class="nav-list-link{% if page.url == node.dir + node.filepath %} active{% endif %}">{{ node }}</a>
+      </li> -->
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+  
+  
+  {% assign nodes = titled_pages | strip | split: '<h' %}
+    
+   {% for node in nodes %}
+        {% if node == "" %}
+            {% continue %}
+        {% endif %}
+
+        {% assign currLevel = node | replace: '"', '' | slice: 0, 1 | times: 1 %}
+
+        {% if currLevel < minHeader or currLevel > maxHeader %}
+            {% continue %}
+        {% endif %}
+
+        {% assign _workspace = node | split: '</h' %}
+
+        {% assign _idWorkspace = _workspace[0] | split: 'id="' %}
+        {% assign _idWorkspace = _idWorkspace[1] | split: '"' %}
+        {% assign htmlID = _idWorkspace[0] %}
+
+        {% assign _classWorkspace = _workspace[0] | split: 'class="' %}
+        {% assign _classWorkspace = _classWorkspace[1] | split: '"' %}
+        {% assign htmlClass = _classWorkspace[0] %}
+
+        {% if htmlClass contains "no_toc" %}
+            {% continue %}
+        {% endif %}
+
+        {% if firstHeader %}
+            {% assign minHeader = currLevel %}
+        {% endif %}
+
+        {% capture _hAttrToStrip %}{{ _workspace[0] | split: '>' | first }}>{% endcapture %}
+        {% assign header = _workspace[0] | replace: _hAttrToStrip, '' %}
+
+        {% if include.item_class and include.item_class != blank %}
+            {% capture listItemClass %} class="{{ include.item_class | replace: '%level%', currLevel | split: '.' | join: ' ' }}"{% endcapture %}
+        {% endif %}
+
+        {% if include.submenu_class and include.submenu_class != blank %}
+            {% assign subMenuLevel = currLevel | minus: 1 %}
+            {% capture subMenuClass %} class="{{ include.submenu_class | replace: '%level%', subMenuLevel | split: '.' | join: ' ' }}"{% endcapture %}
+        {% endif %}
+
+        {% capture anchorBody %}{% if include.sanitize %}{{ header | strip_html }}{% else %}{{ header }}{% endif %}{% endcapture %}
+
+        {% if htmlID %}
+            {% capture anchorAttributes %} href="{% if baseURL %}{{ baseURL }}{% endif %}#{{ htmlID }}"{% endcapture %}
+
+            {% if include.anchor_class %}
+                {% capture anchorAttributes %}{{ anchorAttributes }} class="{{ include.anchor_class | split: '.' | join: ' ' }}"{% endcapture %}
+            {% endif %}
+
+            {% capture listItem %}<a{{ anchorAttributes }}>{{ anchorBody }}</a>{% endcapture %}
+        {% elsif skipNoIDs == true %}
+            {% continue %}
+        {% else %}
+            {% capture listItem %}{{ anchorBody }}{% endcapture %}
+        {% endif %}
+
+        {% if currLevel > lastLevel %}
+            {% capture jekyll_toc %}{{ jekyll_toc }}<{{ listModifier }}{{ subMenuClass }}>{% endcapture %}
+        {% elsif currLevel < lastLevel %}
+            {% assign repeatCount = lastLevel | minus: currLevel %}
+
+            {% for i in (1..repeatCount) %}
+                {% capture jekyll_toc %}{{ jekyll_toc }}</li></{{ listModifier }}>{% endcapture %}
+            {% endfor %}
+
+            {% capture jekyll_toc %}{{ jekyll_toc }}</li>{% endcapture %}
+        {% else %}
+            {% capture jekyll_toc %}{{ jekyll_toc }}</li>{% endcapture %}
+        {% endif %}
+
+        {% capture jekyll_toc %}{{ jekyll_toc }}<li{{ listItemClass }}>{{ listItem }}{% endcapture %}
+
+        {% assign lastLevel = currLevel %}
+        {% assign firstHeader = false %}
+    {% endfor %}
+
+    {% assign repeatCount = minHeader | minus: 1 %}
+    {% assign repeatCount = lastLevel | minus: repeatCount %}
+    {% for i in (1..repeatCount) %}
+        {% capture jekyll_toc %}{{ jekyll_toc }}</li></{{ listModifier }}>{% endcapture %}
+    {% endfor %}
+
+    {% if jekyll_toc != '' %}
+        {% assign rootAttributes = '' %}
+        {% if include.class and include.class != blank %}
+            {% capture rootAttributes %} class="{{ include.class | split: '.' | join: ' ' }}"{% endcapture %}
+        {% endif %}
+
+        {% if include.id and include.id != blank %}
+            {% capture rootAttributes %}{{ rootAttributes }} id="{{ include.id }}"{% endcapture %}
+        {% endif %}
+
+        {% if rootAttributes %}
+            {% assign nodes = jekyll_toc | split: '>' %}
+            {% capture jekyll_toc %}<{{ listModifier }}{{ rootAttributes }}>{{ nodes | shift | join: '>' }}>{% endcapture %}
+        {% endif %}
+    {% endif %}
+  
+</ul>
+
+
+
+
+
+

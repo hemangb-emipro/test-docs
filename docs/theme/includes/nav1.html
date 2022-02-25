@@ -36,7 +36,7 @@
   {%- assign test_page =  pages_list %}
 
   <li class="nav-list-item active">
-        <a href="{{ absolute_url }}" class="nav-list-link active">{{ test_page }}</a>
+        <a href="{{ absolute_url }}" class="nav-list-link active">{{ test_page | strip | split: '<h' }}</a>
       </li>
   
   {%- for node in test_page.contant -%}

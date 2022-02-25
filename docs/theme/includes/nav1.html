@@ -42,7 +42,7 @@
 
   {%- assign pages_list = sorted_number_ordered_pages -%}
 
-  {%- for node in pages_list -%}
+  {%- for node in titled_pages -%}
     {%- if node.parent == nil -%}
       {%- unless node.nav_exclude -%}
       {%- assign temp_page_version = page.url | split: '/' -%}

@@ -1,18 +1,6 @@
 <ul class="nav-list">
   {%- assign titled_pages = include.pages
-        | where_exp:"item", "item.title != nil" -%}
-
-  {%- comment -%}
-    The values of `title` and `nav_order` can be numbers or strings.
-    Jekyll gives build failures when sorting on mixtures of different types,
-    so numbers and strings need to be sorted separately.
-
-    Here, numbers are sorted by their values, and come before all strings.
-    An omitted `nav_order` value is equivalent to the page's `title` value
-    (except that a numerical `title` value is treated as a string).
-
-    The case-sensitivity of string sorting is determined by `site.nav_sort`.
-  {%- endcomment -%}
+        | where_exp:"item", "item.ept != nil" -%}
 
 <!--   {%- assign string_ordered_pages = titled_pages
         | where_exp:"item", "item.nav_order == nil" -%} -->
@@ -20,11 +8,6 @@
   {%- assign nav_ordered_pages = titled_pages
         | where_exp:"item", "item.nav_order != nil"  -%}
 
-  {%- comment -%}
-    The nav_ordered_pages have to be added to number_ordered_pages and
-    string_ordered_pages, depending on the nav_order value.
-    The first character of the jsonify result is `"` only for strings.
-  {%- endcomment -%}
   {%- assign nav_ordered_groups = nav_ordered_pages
         | group_by_exp:"item", "item.nav_order" -%}
         | group_by_exp:"item", "item.nav_order | jsonify | slice: 0" -%}

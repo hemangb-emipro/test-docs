@@ -17,7 +17,6 @@
       <li class="nav-list-item{% if page.url == node.url or page.parent == node.title or page.grand_parent == node.title %} active{% endif %}">
         <a href="{{ absolute_url }}" class="nav-list-link active">{{ index }}</a>
       </li>
-      {%- endif -%}
     {%- endif -%}
   {%- endfor -%} 
 </ul>

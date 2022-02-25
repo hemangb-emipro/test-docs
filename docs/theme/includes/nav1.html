@@ -2,7 +2,7 @@
   {%- assign titled_pages = include.pages
         | where_exp:"item", "item.ept != nil" -%}
   
-  {%- assign string_ordered_pages = titled_pages
+<!--   {%- assign string_ordered_pages = titled_pages
         | where_exp:"item", "item.nav_order == nil" -%}
   {%- assign nav_ordered_pages = titled_pages
         | where_exp:"item", "item.nav_order != nil"  -%}
@@ -32,8 +32,8 @@
     {%- assign sorted_string_ordered_pages = sorted_string_ordered_pages | concat: group.items -%}
   {%- endfor -%}
 
-  {%- assign pages_list = sorted_number_ordered_pages | concat: sorted_string_ordered_pages -%}
-  {%- assign test_page =  pages_list %}
+  {%- assign pages_list = sorted_number_ordered_pages | concat: sorted_string_ordered_pages -%} -->
+  {%- assign test_page =  titled_pages %}
 
   <li class="nav-list-item active">
         <a href="{{ absolute_url }}" class="nav-list-link active">{{ test_page | strip | split: '<h' }}</a>

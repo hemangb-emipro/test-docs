@@ -1,9 +1,3 @@
----
-layout: default
-title: Sales Reporting
-nav_order: 7
----
-
 ### Sales Reporting
 
 

@@ -33,9 +33,9 @@
   {%- endfor -%}
 
   {%- assign pages_list = sorted_number_ordered_pages | concat: sorted_string_ordered_pages -%}
-  {%- assign test_page =  pages_list | strip | split: '<h' %}
+  {%- assign test_page =  pages_list %}
 
-  {%- for node in test_page -%}
+  {%- for node in test_page.contant -%}
     {%- if node.parent == nil -%}
       {%- assign temp_page_version = page.url | split: '/' -%}
       {%- assign temp_node_url = node.url | split: '/' -%}

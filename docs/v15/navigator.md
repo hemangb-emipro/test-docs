@@ -4,6 +4,7 @@ title: Overview
 nav_order: 1
 ept: 123
 filepath: overview/1-overview.html
+index:
+  - 1. Overview
+  - 2. Installation
 ---
-
-# Overview

@@ -3,12 +3,12 @@
         | where_exp:"item", "item.ept != nil" -%}
   {%- assign test_page =  titled_pages %}
   
-<!--   <li> <!-- class="nav-list-item{% if page.url == node.url or page.parent == node.title or page.grand_parent == node.title %} active{% endif %}"> -->
+  <li> <!-- class="nav-list-item{% if page.url == node.url or page.parent == node.title or page.grand_parent == node.title %} active{% endif %}"> -->
     <p>sfdhkjsdhfkl</p>
         <a href="{{ absolute_url }}" >{{ titled_pages }}</a>
-      </li> -->
+      </li>
   
-  {%- for node in titled_pages -%}
+<!--   {%- for node in titled_pages -%}
     {%- if node.parent == nil -%}
       {%- assign temp_page_version = page.url | split: '/' -%}
       {%- assign temp_node_url = node.url | split: '/' -%}
@@ -23,7 +23,7 @@
         {%- endfor -%}
       {%- endif -%}
     {%- endif -%}
-  {%- endfor -%} 
+  {%- endfor -%}  -->
 </ul>
 
 

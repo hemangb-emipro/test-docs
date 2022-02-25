@@ -3,7 +3,7 @@
         | where_exp:"item", "item.ept != nil" -%}
   {%- assign test_page =  titled_pages %}
   
-  {%- for node in titled_pages -%}
+  {%- for node in titled_pages.index -%}
     {%- if node.parent == nil -%}
       {%- assign temp_page_version = page.url | split: '/' -%}
       {%- assign temp_node_url = node.url | split: '/' -%}

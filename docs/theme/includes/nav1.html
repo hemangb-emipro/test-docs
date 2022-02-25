@@ -16,9 +16,9 @@
         {%- for index in node.index -%}
           {%- assign page_data = index | split: '|' -%}
           {%- assign page_name = page_data[0] -%}
-          {%- assign page_url = page_data | replace: ".md", ".html" -%}
+          {%- assign page_url = page_data[1] | replace: ".md", ".html" -%}
           <li class="nav-list-item{% if page.url == node.url or page.parent == node.title or page.grand_parent == node.title %} active{% endif %}">
-            <a href="{{ page_url | absolute_url }}" class="nav-list-link active">{{ page_url[1] }}</a>
+            <a href="{{ page_url | absolute_url }}" class="nav-list-link active">{{ page_name }}</a>
           </li>
         {%- endfor -%}
       {%- endif -%}

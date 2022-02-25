@@ -9,7 +9,7 @@
       {%- assign temp_node_url = node.url | split: '/' -%}
       {%- if temp_page_version[1] == temp_node_url[1] -%}
       <li class="nav-list-item{% if page.url == node.dir + node.filepath %} active{% endif %}">
-        <a href="{{ node.dir + node.filepath | absolute_url }}" class="nav-list-link{% if page.url == node.dir + node.filepath %} active{% endif %}">{{ node.contant }}</a>
+        <a href="{{ node.dir + node.filepath | absolute_url }}" class="nav-list-link{% if page.url == node.dir + node.filepath %} active{% endif %}">{{ node }}</a>
       </li>
       {%- endif -%}
     {%- endif -%}

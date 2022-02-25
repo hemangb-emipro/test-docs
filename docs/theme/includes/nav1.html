@@ -63,7 +63,7 @@
       {%- assign temp_page_version = page.url | split: '/' -%}
       {%- assign temp_node_url = node.url | split: '/' -%}
       {%- if temp_page_version[1] == temp_node_url[1] -%}
-      <li class="nav-list-item{% if page.url == node.url or page.parent == node.title or page.grand_parent == node.title %} active{% endif %}">
+      <li class="nav-list-item{% if page.url == node.filepath or page.parent == node.title or page.grand_parent == node.title %} active{% endif %}">
 <!--         {%- if node.has_children -%}
           <a href="#" class="nav-list-expander"><svg viewBox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a>
         {%- endif -%} -->

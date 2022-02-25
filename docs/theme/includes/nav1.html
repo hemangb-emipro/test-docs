@@ -16,7 +16,7 @@
         {%- for index in node.index -%}
           {%- assign page_url = index split: '(' -%}
           <li class="nav-list-item{% if page.url == node.url or page.parent == node.title or page.grand_parent == node.title %} active{% endif %}">
-            <a href="{{ page_url[0] | absolute_url }}" class="nav-list-link active">{{ page_url[1] }}</a>
+            <a href="{{ absolute_url }}" class="nav-list-link active">{{ page_url }}</a>
           </li>
         {%- endfor -%}
       {%- endif -%}

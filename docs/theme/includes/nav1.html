@@ -35,11 +35,15 @@
   {%- assign pages_list = sorted_number_ordered_pages | concat: sorted_string_ordered_pages -%}
   {%- assign test_page =  pages_list %}
 
+  <li class="nav-list-item{% if page.url == node.dir + node.filepath %} active{% endif %}">
+        <a href="{{ node.dir + node.filepath | absolute_url }}" class="nav-list-link{% if page.url == node.dir + node.filepath %} active{% endif %}">{{ node }}</a>
+      </li>
+  
   {%- for node in test_page.contant -%}
-    {%- if node.parent == nil -%}
+<!--     {%- if node.parent == nil -%}
       {%- assign temp_page_version = page.url | split: '/' -%}
       {%- assign temp_node_url = node.url | split: '/' -%}
-      {%- if temp_page_version[1] == temp_node_url[1] -%}
+      {%- if temp_page_version[1] == temp_node_url[1] -%} -->
       <li class="nav-list-item{% if page.url == node.dir + node.filepath %} active{% endif %}">
         <a href="{{ node.dir + node.filepath | absolute_url }}" class="nav-list-link{% if page.url == node.dir + node.filepath %} active{% endif %}">{{ node }}</a>
       </li>

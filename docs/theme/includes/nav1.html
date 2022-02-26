@@ -8,6 +8,9 @@
    </li>
   
   {%- for node in titled_pages -%}
+    <li class="nav-list-item active">
+            <a href="{{ absolute_url }}" class="nav-list-link active">{{ node }}</a>
+      </li>
     {%- for n in node.contant -%}
       <li class="nav-list-item active">
             <a href="{{ absolute_url }}" class="nav-list-link active">{{ n }}</a>

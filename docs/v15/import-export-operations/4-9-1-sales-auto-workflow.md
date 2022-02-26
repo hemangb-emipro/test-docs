@@ -1,11 +1,3 @@
----
-layout: default
-title: Sales Auto Workflow
-parent: Import Sale Order
-grand_parent: Import/Export Operations
-nav_order: 4.9.1
----
-
 ### Sales Auto Workflow
 
 

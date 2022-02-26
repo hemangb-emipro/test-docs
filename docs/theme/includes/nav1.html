@@ -1,14 +1,9 @@
 <ul class="nav-list">
   {%- assign titled_pages = include.pages
         | where_exp:"item", "item.ept != nil" -%}
-<!--   
-  <li> 
-    <p>sfdhkjsdhfkl</p>
-    <a href="{{ absolute_url }} class=nav-list-link active">{{ titled_pages }}</a>
-   </li> -->
   
   {%- for node in titled_pages -%}
-    {%- if node.dir == page.dir -%}
+    {%- if page.dir contains node.dir -%}
       <li class="nav-list-item active">
             <a href="{{ node.url | absolute_url }}" class="nav-list-link active">{{ node.content }}</a>
       </li>

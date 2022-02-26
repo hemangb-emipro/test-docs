@@ -13,7 +13,7 @@
       {%- assign temp_node_url = node.url | split: '/' -%}
       {%- if temp_page_version[1] == temp_node_url[1] -%}
       <li class="nav-list-item active">
-            <a href="{{ absolute_url }}" class="nav-list-link active">{{ node }}</a>
+            <a href="{{ absolute_url }}" class="nav-list-link active">{{ node.content }}</a>
           </li> 
   
   

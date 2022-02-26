@@ -3,26 +3,31 @@
         | where_exp:"item", "item.ept != nil" -%}
   
   <li> <!-- class="nav-list-item{% if page.url == node.url or page.parent == node.title or page.grand_parent == node.title %} active{% endif %}"> -->
-    <p>sfdhkjsdhfkl</p>
-    <a href="{{ absolute_url }} class=nav-list-link active">{{ titled_pages }}</a>
+<!--     <p>sfdhkjsdhfkl</p>
+    <a href="{{ absolute_url }} class=nav-list-link active">{{ titled_pages }}</a> -->
    </li>
   
-<!--   {%- for node in titled_pages -%}
+  {%- for node in titled_pages -%}
     {%- if node.parent == nil -%}
       {%- assign temp_page_version = page.url | split: '/' -%}
       {%- assign temp_node_url = node.url | split: '/' -%}
       {%- if temp_page_version[1] == temp_node_url[1] -%}
-        {%- for index in node.index -%}
+      <li class="nav-list-item active">
+            <a href="{{ absolute_url }}" class="nav-list-link active">{{ node }}</a>
+          </li> 
+  
+  
+<!--         {%- for index in node.index -%}
           {%- assign page_data = index | split: '|' -%}
           {%- assign page_name = page_data[0] -%}
           {%- assign page_url = page_data[1] | replace: ".md", ".html" -%}
           <li class="nav-list-item{% if page.url == node.url or page.parent == node.title or page.grand_parent == node.title %} active{% endif %}">
             <a href="{{ titled_pages.dir + page_url | absolute_url }}" class="nav-list-link active">{{ titled_pages }}</a>
           </li>
-        {%- endfor -%}
+        {%- endfor -%} -->
       {%- endif -%}
     {%- endif -%}
-  {%- endfor -%}  -->
+  {%- endfor -%} 
 </ul>
 
 

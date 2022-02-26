@@ -1,11 +1,11 @@
 <ul class="nav-list">
   {%- assign titled_pages = include.pages
         | where_exp:"item", "item.ept != nil" -%}
-  
-  <li> <!-- class="nav-list-item{% if page.url == node.url or page.parent == node.title or page.grand_parent == node.title %} active{% endif %}"> -->
-<!--     <p>sfdhkjsdhfkl</p>
-    <a href="{{ absolute_url }} class=nav-list-link active">{{ titled_pages }}</a> -->
-   </li>
+<!--   
+  <li> 
+    <p>sfdhkjsdhfkl</p>
+    <a href="{{ absolute_url }} class=nav-list-link active">{{ titled_pages }}</a>
+   </li> -->
   
   {%- for node in titled_pages -%}
       <li class="nav-list-item active">

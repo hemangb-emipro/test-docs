@@ -1,8 +1,5 @@
 ---
-layout: default
-title: Overview
-ept: 1
-nav_order: 1
+is_index: True
 ---
 
 - [Overview](overview/1-overview.md)

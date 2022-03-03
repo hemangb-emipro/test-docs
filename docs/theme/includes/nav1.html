@@ -5,7 +5,7 @@
   {%- for node in index_page -%}
     {%- if page.dir contains node.dir -%}
       <li class="nav-list-item active">
-            <a href="{{ node.url | absolute_url }}" class="nav-list-link">{{ node.content }}</a>
+            <a href="{{ node.url | absolute_url }}" class="nav-list-link">{{ node.content | split:'<li }}</a>
       </li>
     {%- endif -%}
   {%- endfor -%}

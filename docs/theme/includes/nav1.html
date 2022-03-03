@@ -4,9 +4,9 @@
   
   {%- for node in index_page -%}
     {%- if page.dir contains node.dir -%}
+      <p> {{ node.content.index }} </p>
       <li class="nav-list-item active">
-            <a href="{{ node.url | absolute_url }}" class="nav-list-link">{{ node.content.offset[1]}}</a>
-            <a href="{{ node.url | absolute_url }}" class="nav-list-link">{{ node.content.offset}}</a>
+            <a href="{{ node.url | absolute_url }}" class="nav-list-link">{{ node.content.index}}</a>
       </li>
     {%- endif -%}
   {%- endfor -%}

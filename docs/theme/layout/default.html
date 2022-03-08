@@ -40,7 +40,9 @@ layout: table_wrappers
     </symbol>
   </svg>
 
+  
   <div class="side-bar">
+    <div class="ept_nav_arr ept_lf_arr"></div>
     <div class="site-header">
       <a href="{{ '/' | absolute_url }}" class="site-title lh-tight ept-cust-dt-sb-header">{% include title.html %}</a>
       <div class="site-title lh-tight ept-cust-mb-sb-header">{% include mobile_title.html %}</div>
@@ -59,13 +61,16 @@ layout: table_wrappers
             {% if collections_size > 1 %}
               <div class="nav-category">{{ collection_value.name }}</div>
             {% endif %}
-            {% include nav1.html pages=collection %}
+            {% include nav1.html pages=site.html_pages %}
           {% endif %}
         {% endfor %}
       {% else %}
         {% include nav1.html pages=site.html_pages %}
       {% endif %}
     </nav>
+    <footer class="site-footer">
+      This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
+    </footer>
   </div>
   <div class="main" id="top">
     <div id="main-header" class="main-header">

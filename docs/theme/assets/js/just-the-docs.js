@@ -35,6 +35,7 @@ function initNav() {
     }
   });
 
+
   const siteNav = document.getElementById('site-nav');
   const mainHeader = document.getElementById('main-header');
   const menuButton = document.getElementById('menu-button');
@@ -456,6 +457,7 @@ jtd.setTheme = function(theme) {
   var cssFile = document.querySelector('[rel="stylesheet"]');
   cssFile.setAttribute('href', '{{ "assets/css/just-the-docs-" | absolute_url }}' + theme + '.css');
 }
+
 
 // Document ready
 

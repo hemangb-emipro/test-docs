@@ -25,12 +25,12 @@
     </script>
 
   {% endif %}
-  <!-- <script type="text/javascript" src="{{ 'theme/assets/js/jquery.min.js' | relative_url }}"></script> -->
+  
   {% if site.search_enabled != false %}
     <script type="text/javascript" src="{{ 'theme/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
   {% endif %}
   <script type="text/javascript" src="{{ 'theme/assets/js/just-the-docs.js' | relative_url }}"></script>
-
+  <script src="{{'/theme/assets/js/jquery.min.js' | prepend: site.baseurl}}"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   {% seo %}
